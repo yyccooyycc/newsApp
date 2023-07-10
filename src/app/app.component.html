@@ -1,14 +1,13 @@
 <mat-toolbar color="primary">
   <button mat-button class="example-icon">
-   <mat-icon class="mat-18">menu</mat-icon>
-   <mat-icon class="mat-18">close</mat-icon>
+   <mat-icon (click)="this.sideNav.open()" class="mat-18" *ngIf="!this.sideNav.opened">menu</mat-icon>
+   <mat-icon (click)="this.sideNav.close()"class="mat-18" *ngIf="this.sideNav.opened">close</mat-icon>
   </button>
   <span>News App</span>
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav #sideNav="matSidenav">
-    <img src="" alt="" class="avatar mat-elevation-z8">
-    <h4>Let's program</h4>
+    <img src="https://cdn4.vectorstock.com/i/thumb-large/50/08/news-alerts-breaking-logo-tv-design-element-vector-24575008.jpg" alt="" class="avatar mat-elevation-z8">
     <mat-divider></mat-divider>
     <button mat-button class="menu-button">
       <mat-icon>event_note</mat-icon>
