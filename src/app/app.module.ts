@@ -9,6 +9,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,MatSidenavModule,MatDividerModule,MatButtonModule,MatIconModule
+    MatToolbarModule,MatSidenavModule,MatDividerModule,MatButtonModule,MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

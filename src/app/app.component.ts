@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component,ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import { NewServiceService } from './new-service.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,29 @@ import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/l
 })
 export class AppComponent implements AfterViewInit{
   title = 'newsApp';
+  sources: any =[];
+  articles: any =[];
+  selectedNewsChannel: string = 'Top 10 Trending News!'
   @ViewChild(MatSidenav)sideNav!:MatSidenav;
 
-  constructor(private observer: BreakpointObserver, private cd: ChangeDetectorRef){
+  constructor(private observer: BreakpointObserver, private cd: ChangeDetectorRef, private newsApi : NewServiceService){
     
+  }
+
+  ngOnInit(): void{
+
+    this.newsApi.initArticles().subscribe((res:any)=>{
+      console.log(res);
+      this.articles=res.articles
+    })
+
+
+    this.newsApi.initSource().subscribe((res:any)=>{
+      console.log(res);
+      this.sources = res.sources
+
+    })
+
   }
   ngAfterViewInit(): void {
     this.sideNav.opened = true;
@@ -26,5 +46,12 @@ export class AppComponent implements AfterViewInit{
       }
     })
     this.cd.detectChanges() 
+  }
+
+  searchSource(source:any){
+    this.newsApi.getArticlesByid(source.id).subscribe((res:any)=>{
+      this.selectedNewsChannel =source.name;
+      this.articles = res.articles
+    })
   }
 }
