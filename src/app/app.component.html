@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-  <button mat-button class="example-icon">
-   <mat-icon (click)="this.sideNav.open()" class="mat-18" *ngIf="!this.sideNav.opened">menu</mat-icon>
-   <mat-icon (click)="this.sideNav.close()"class="mat-18" *ngIf="this.sideNav.opened">close</mat-icon>
+  <button mat-button class="example-icon" (click)="sideNav.toggle()">
+   <mat-icon class="mat-18" *ngIf="!this.sideNav.opened">menu</mat-icon>
+   <mat-icon class="mat-18" *ngIf="this.sideNav.opened">close</mat-icon>
   </button>
   <span>News App</span>
 </mat-toolbar>

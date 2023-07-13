@@ -35,8 +35,7 @@ export class AppComponent implements AfterViewInit{
 
   }
   ngAfterViewInit(): void {
-    this.sideNav.opened = true;
-    this.observer.observe(['(max-width:787px)']).subscribe((res)=>{
+    this.observer.observe(['(max-width:1600px)']).subscribe((res)=>{
       if(res?.matches){
         this.sideNav.mode = "over";
         this.sideNav.close();
